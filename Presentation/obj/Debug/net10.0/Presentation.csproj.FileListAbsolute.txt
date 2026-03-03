@@ -1,0 +1,9 @@
+C:\Users\stell\source\repos\objectoriented-analysis\Presentation\obj\Debug\net10.0\Presentation.csproj.AssemblyReference.cache
+C:\Users\stell\source\repos\objectoriented-analysis\Presentation\obj\Debug\net10.0\rpswa.dswa.cache.json
+C:\Users\stell\source\repos\objectoriented-analysis\Presentation\obj\Debug\net10.0\Presentation.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\stell\source\repos\objectoriented-analysis\Presentation\obj\Debug\net10.0\Presentation.AssemblyInfoInputs.cache
+C:\Users\stell\source\repos\objectoriented-analysis\Presentation\obj\Debug\net10.0\Presentation.AssemblyInfo.cs
+C:\Users\stell\source\repos\objectoriented-analysis\Presentation\obj\Debug\net10.0\Presentation.csproj.CoreCompileInputs.cache
+C:\Users\stell\source\repos\objectoriented-analysis\Presentation\obj\Debug\net10.0\Presentation.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\stell\source\repos\objectoriented-analysis\Presentation\obj\Debug\net10.0\Presentation.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\stell\source\repos\objectoriented-analysis\Presentation\obj\Debug\net10.0\Presentation.sourcelink.json
