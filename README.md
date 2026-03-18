@@ -5,16 +5,23 @@ Systemet jag valt att utgå från i denna uppgift är ett internt rumsbokningssy
 Den centrala utmaningen är att mötesrum är begränsade resurser som endast kan användas av en part åt gången. Syftet med systemet är därför att upprätthålla regeln om att tillgång till ett rum ska vara exklusivt under ett givet tidsintervall, samtidigt som det ska vara lättanvänt, tillgängligt och säkert.
 
 ## Kravanalys
+
 ### Funktionella Krav
+
 De funktionella kraven utgår från att varje anställd ska kunna logga in i systemet med sina organisationsuppgifter. Efter inloggning ska användaren kunna se en översikt över tillgängliga rum, boka ett rum för ett visst datum och tidsintervall, ändra sina egna bokningar samt avboka dem.
 Vid skapandet av en bokning ska systemet automatiskt kontrollera att rummet är ledigt under det angivna tidsintervallet. Om en överlappning identifieras ska bokningen nekas. Detta är systemets mest centrala affärsregel och får aldrig kunna kringgås.
+
 Användaren ska kunna filtrera rum baserat på kapacitet. Detta krav uppstår ur verksamhetens behov att hitta lämpliga lokaler beroende på hur många som deltar på mötet.
 Receptionisten har samma rättigheter som en vanlig anställd men kan dessutom boka rum åt andra användare och hantera konflikter. En systemadministratör ska kunna skapa och uppdatera mötesrum samt hantera användarroller.
 
 ### Icke-funktionella krav
+
 Om två personer försöker boka samma rum vid samma tidpunkt finns risken att båda hinner se rummet som ledigt innan någon av bokningarna sparas. Detta kallas en race condition. För att undvika detta måste systemet säkerställa att kontrollen av om tiden är ledig och själva sparandet av bokningen sker i ett och samma sammanhängande steg i databasen, en så kallad transaktion. Det innebär att antingen genomförs hela bokningen korrekt, eller så genomförs den inte alls. På så sätt kan inte två bokningar råka godkännas för samma rum och tid.
+
  Eftersom mötesrum används dagligen påverkar ett driftstopp hela organisationens planering. Om systemet ligger nere kan medarbetare inte se bokningar eller reservera rum, vilket snabbt skapar stora problem. Därför är det mer lämpligt att drifta systemet på en VPS istället för ett delat webbhotell. En VPS innebär att organisationen inte delar serverresurser med andra kunder, vilket ger bättre kontroll över prestanda och säkerhet. Om organisationen är större och systemet är extra kritiskt borde man dessutom använda flera servrar samtidigt. Då kan en server ta över om en annan slutar fungera, vilket minskar risken för avbrott. För ett medelstort företag skulle den mest säkra och robusta lösningen vara 3 eller fler servrar. 
+ 
 Prestanda är också en viktig faktor. När en användare öppnar kalendern ska systemet snabbt visa vilka rum som är lediga och bokade. Om systemet är långsamt skapas frustration och ineffektivitet. För att förbättra hastigheten kan systemet tillfälligt lagra ofta efterfrågad information, till exempel en dagsöversikt, i ett cacheminne. Det gör att samma information inte behöver hämtas från databasen varje gång. Samtidigt måste systemet se till att denna tillfälliga lagring uppdateras direkt när en ny bokning skapas eller ändras, så att informationen alltid är korrekt.
+
 Säkerheten är också central. Alla användare måste logga in för att komma åt systemet, vilket innebär att systemet måste kunna verifiera deras identitet, alltså autentisering. Därefter måste systemet kontrollera vad varje användare har rätt att göra, vilket är auktorisation. En vanlig anställd ska bara kunna ändra eller avboka sina egna bokningar, medan receptionisten ska kunna hantera bokningar för andra. Dessutom ska all kommunikation mellan användarens webbläsare och systemet vara krypterad genom HTTPS. Det skyddar informationen från att kunna avlyssnas eller manipuleras under överföringen.
 
 ## Use Cases
